@@ -1,182 +1,101 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Giới thiệu về bố tôi</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Giới thiệu về bố tôi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Tahoma, sans-serif;
-            background: linear-gradient(135deg, #1f2a36, #3b4b63);
-            color: #2c2c2c;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Khung chính */
-        .container {
-            max-width: 900px;
-            margin: 60px auto;
-            background: linear-gradient(180deg, #f4f6f9, #e9edf3);
-            padding: 50px;
-            border-radius: 14px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
-        }
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      min-height: 100vh;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            color: #1f2a36;
-        }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #444;
-            margin-bottom: 45px;
-            font-style: italic;
-        }
+    .profile {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-        .profile {
-            display: flex;
-            gap: 35px;
-            align-items: center;
-            margin-bottom: 45px;
-        }
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      margin-bottom: 20px;
+    }
 
-        .avatar {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid #b08d57; /* màu đồng */
-            background: #fff;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
 
-        .avatar:hover {
-            transform: scale(1.08);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.35);
-        }
+    .info {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 6px;
+    }
 
-        .info {
-            background: linear-gradient(145deg, #ffffff, #e6eaf0);
-            padding: 25px 30px;
-            border-radius: 12px;
-            border-left: 6px solid #b08d57;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-        }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
 
-        .info:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 14px 30px rgba(0,0,0,0.2);
-        }
+    .gallery img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
 
-        .info p {
-            margin: 10px 0;
-            font-size: 16px;
-        }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
 
-        .info span {
-            font-weight: 600;
-            color: #1f2a36;
-        }
-
-        /* Section dạng card */
-        .section {
-            margin-top: 45px;
-            background: linear-gradient(145deg, #ffffff, #e6ebf2);
-            padding: 30px;
-            border-radius: 14px;
-            border-left: 6px solid #3b4b63;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-        }
-
-        .section h2 {
-            font-size: 23px;
-            margin-bottom: 18px;
-            color: #1f2a36;
-        }
-
-        .section p {
-            line-height: 1.8;
-            color: #333;
-        }
-
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 10px 22px rgba(0,0,0,0.2);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.4);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 55px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-
-<div class="container">
-    <h1>Giới thiệu về bố tôi</h1>
-    <p class="subtitle">Người đàn ông điềm đạm, vững vàng và giàu trách nhiệm</p>
-
+  <div class="container">
     <div class="profile">
-        <img src="anh.jpg" alt="Ảnh đại diện của bố" class="avatar">
-
-        <div class="info">
-            <p><span>Họ và tên:</span> Nguyễn Văn A</p>
-            <p><span>Năm sinh:</span> 1975</p>
-            <p><span>Số điện thoại:</span> 0123 456 789</p>
-            <p><span>Email:</span> nguyenvana@gmail.com</p>
-        </div>
+      <img src="./anh.jpg" alt="Ảnh bố tôi" class="avatar">
+      <h1>Nguyễn Văn A</h1>
+      <p class="info">Năm sinh: 1975</p>
+      <p class="info">📞 SĐT: 09xxxxxxxx</p>
+      <p class="info">✉️ Email: example@gmail.com</p>
     </div>
 
-    <div class="section">
-        <h2>Vài nét về bố</h2>
-        <p>
-            Bố tôi là người sống nguyên tắc, điềm tĩnh và luôn giữ vững trách nhiệm
-            với gia đình. Qua từng hành động nhỏ, bố dạy tôi về sự kiên trì,
-            lòng tự trọng và cách trở thành một người đàn ông đúng nghĩa.
-        </p>
-    </div>
-
-    <div class="section">
-        <h2>Hình ảnh liên quan</h2>
-        <div class="gallery">
-            <img src="anh.jpg">
-            <img src="image2.jpg">
-            <img src="image3.jpg">
-        </div>
+    <div class="gallery">
+      <img src="anh.jpg" alt="">
+      <img src="./img2.jpg" alt="">
+      <img src="./img3.jpg" alt="">
     </div>
 
     <footer>
-        © 2025 — Trang giới thiệu gia đình
+      Trang giới thiệu gia đình – 2025
     </footer>
-</div>
-
+  </div>
 </body>
 </html>
