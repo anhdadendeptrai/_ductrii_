@@ -1,207 +1,182 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>my family</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fff8e7, #ffe0e0, #fff5cc);
-      margin: 0;
-      padding: 40px 20px;
-      text-align: center;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <title>Giới thiệu về bố tôi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    h1 {
-      margin-bottom: 40px;
-      font-size: 36px;
-      color: #8b4513;
-      text-shadow: 2px 2px 4px rgba(255, 200, 150, 0.6);
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1f2a36, #3b4b63);
+            color: #2c2c2c;
+        }
 
-    /* Hiệu ứng nền lung linh */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: radial-gradient(circle, rgba(255,200,150,0.3) 2px, transparent 2px);
-      background-size: 50px 50px;
-      animation: sparkle 10s linear infinite;
-      z-index: -1;
-    }
-    @keyframes sparkle {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
-    }
+        /* Khung chính */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            background: linear-gradient(180deg, #f4f6f9, #e9edf3);
+            padding: 50px;
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+        }
 
-    /* Avatar hình tròn nghệ thuật */
-    .avatar-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-bottom: 60px;
-    }
+        h1 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #1f2a36;
+        }
 
-    .avatar {
-      text-align: center;
-      position: relative;
-    }
+        .subtitle {
+            text-align: center;
+            color: #444;
+            margin-bottom: 45px;
+            font-style: italic;
+        }
 
-    .avatar a {
-      display: block;
-      overflow: hidden;
-      border-radius: 50%;
-      border: 4px solid rgba(255, 200, 150, 0.8);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-    }
+        .profile {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            margin-bottom: 45px;
+        }
 
-    .avatar img {
-      width: var(--size);
-      height: var(--size);
-      object-fit: cover;
-      border-radius: 50%;
-      transform: rotate(var(--rotate));
-    }
+        .avatar {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #b08d57; /* màu đồng */
+            background: #fff;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
 
-    /* Vòng sáng quanh avatar */
-    .avatar a::after {
-      content: "";
-      position: absolute;
-      top: -10px; left: -10px;
-      width: calc(var(--size) + 20px);
-      height: calc(var(--size) + 20px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,180,120,0.4), transparent 70%);
-      animation: glow 3s ease-in-out infinite alternate;
-      z-index: -1;
-    }
-    @keyframes glow {
-      from { opacity: 0.3; transform: scale(1); }
-      to { opacity: 0.7; transform: scale(1.1); }
-    }
+        .avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.35);
+        }
 
-    .avatar a:hover {
-      transform: scale(1.2) rotate(5deg);
-      box-shadow: 0 0 25px rgba(255, 180, 120, 0.8),
-                  0 0 40px rgba(255, 120, 150, 0.6);
-    }
+        .info {
+            background: linear-gradient(145deg, #ffffff, #e6eaf0);
+            padding: 25px 30px;
+            border-radius: 12px;
+            border-left: 6px solid #b08d57;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
 
-    .avatar-name {
-      margin-top: 6px;
-      font-weight: bold;
-      font-size: 15px;
-      color: #5c4033;
-    }
+        .info:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+        }
 
-    /* Khung tranh nghệ thuật */
-    .frame-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
+        .info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
 
-    .frame {
-      width: var(--width);
-      height: var(--height);
-      border: 6px solid #d2a679;
-      border-radius: 12px;
-      background-color: #fffaf0;
-      transform: rotate(var(--angle));
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
-    }
+        .info span {
+            font-weight: 600;
+            color: #1f2a36;
+        }
 
-    .frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-    }
+        /* Section dạng card */
+        .section {
+            margin-top: 45px;
+            background: linear-gradient(145deg, #ffffff, #e6ebf2);
+            padding: 30px;
+            border-radius: 14px;
+            border-left: 6px solid #3b4b63;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
 
-    /* Khung tranh rung nhẹ khi hover */
-    .frame:hover {
-      animation: wobble 0.6s ease;
-    }
-    @keyframes wobble {
-      0% { transform: rotate(var(--angle)) translateX(0); }
-      25% { transform: rotate(var(--angle)) translateX(-5px); }
-      50% { transform: rotate(var(--angle)) translateX(5px); }
-      75% { transform: rotate(var(--angle)) translateX(-3px); }
-      100% { transform: rotate(var(--angle)) translateX(0); }
-    }
-  </style>
-  
+        .section:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+        .section h2 {
+            font-size: 23px;
+            margin-bottom: 18px;
+            color: #1f2a36;
+        }
+
+        .section p {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 55px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-  <h1>_My Family_</h1>
 
-  <!-- Avatar hình tròn nghệ thuật -->
-  <div class="avatar-row">
-    <div class="avatar" style="--size:90px; --rotate:-5deg">
-      <a href="detail1.html"><img src="bo.jpg" alt="Bố"></a>
-      <div class="avatar-name">Bố</div>
-    </div>
-    <div class="avatar" style="--size:110px; --rotate:3deg">
-      <a href="detail2.html"><img src="me.jpg" alt="Mẹ"></a>
-      <div class="avatar-name">Mẹ</div>
-    </div>
-    <div class="avatar" style="--size:80px; --rotate:-8deg">
-      <a href="detail3.html"><img src="anhtrai.jpg" alt="Anh trai"></a>
-      <div class="avatar-name">Anh trai</div>
-    </div>
-    <div class="avatar" style="--size:100px; --rotate:6deg">
-      <a href="detail4.html"><img src="emgai.jpg" alt="Em gái"></a>
-      <div class="avatar-name">Em gái</div>
-    </div>
-    <div class="avatar" style="--size:95px; --rotate:-4deg">
-      <a href="detail5.html"><img src="emtrai.jpg" alt="Em trai"></a>
-      <div class="avatar-name">Em trai</div>
-    </div>
-    <div class="avatar" style="--size:105px; --rotate:5deg">
-      <a href="detail6.html"><img src="chigai.jpg" alt="Chị gái"></a>
-      <div class="avatar-name">Chị gái</div>
-    </div>
-    <div class="avatar" style="--size:85px; --rotate:-6deg">
-      <a href="detail7.html"><img src="anhre.jpg" alt="Anh rể"></a>
-      <div class="avatar-name">Anh rể</div>
-    </div>
-    <div class="avatar" style="--size:115px; --rotate:7deg">
-      <a href="detail8.html"><img src="chidau.jpg" alt="Chị dâu"></a>
-      <div class="avatar-name">Chị dâu</div>
-    </div>
-    <div class="avatar" style="--size:90px; --rotate:-3deg">
-      <a href="detail9.html"><img src="ong.jpg" alt="Ông"></a>
-      <div class="avatar-name">Ông</div>
-    </div>
-    <div class="avatar" style="--size:100px; --rotate:4deg">
-      <a href="detail10.html"><img src="ba.jpg" alt="Bà"></a>
-      <div class="avatar-name">Bà</div>
-    </div>
-  </div>
+<div class="container">
+    <h1>Giới thiệu về bố tôi</h1>
+    <p class="subtitle">Người đàn ông điềm đạm, vững vàng và giàu trách nhiệm</p>
 
-  <!-- 4 Khung tranh nghệ thuật -->
-  <div class="frame-row">
-    <div class="frame" style="--angle:-8deg; --width:160px; --height:100px;">
-      <a href="family1.html"><img src="anh.jpg" alt="Ảnh gia đình 1"></a>
+    <div class="profile">
+        <img src="anh.jpg" alt="Ảnh đại diện của bố" class="avatar">
+
+        <div class="info">
+            <p><span>Họ và tên:</span> Nguyễn Văn A</p>
+            <p><span>Năm sinh:</span> 1975</p>
+            <p><span>Số điện thoại:</span> 0123 456 789</p>
+            <p><span>Email:</span> nguyenvana@gmail.com</p>
+        </div>
     </div>
-    <div class="frame" style="--angle:5deg; --width:140px; --height:120px;">
-      <a href="family2.html"><img src="anh.jpg" alt="Ảnh gia đình 2"></a>
+
+    <div class="section">
+        <h2>Vài nét về bố</h2>
+        <p>
+            Bố tôi là người sống nguyên tắc, điềm tĩnh và luôn giữ vững trách nhiệm
+            với gia đình. Qua từng hành động nhỏ, bố dạy tôi về sự kiên trì,
+            lòng tự trọng và cách trở thành một người đàn ông đúng nghĩa.
+        </p>
     </div>
-    <div class="frame" style="--angle:-4deg; --width:180px; --height:110px;">
-      <a href="family3.html"><img src="anh.jpg" alt="Ảnh gia đình 3"></a>
+
+    <div class="section">
+        <h2>Hình ảnh liên quan</h2>
+        <div class="gallery">
+            <img src="anh.jpg">
+            <img src="image2.jpg">
+            <img src="image3.jpg">
+        </div>
     </div>
-	 <div class="frame" style="--angle:6deg; --width:180px; --height:110px;">
-      <a href="family3.html"><img src="anh.jpg" alt="Ảnh gia đình 4"></a>
-    </div>
+
+    <footer>
+        © 2025 — Trang giới thiệu gia đình
+    </footer>
+</div>
+
 </body>
 </html>
-    
