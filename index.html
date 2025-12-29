@@ -1,100 +1,193 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Giới thiệu về bố tôi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giới thiệu về Mẹ</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg1: #fde2e4;   /* hồng nhạt */
+      --bg2: #fff1f2;   /* hồng pastel */
+      --bg3: #ffffff;   /* trắng */
+      --card: #ffffff;
+      --text: #3f3f46;
+      --muted: #6b7280;
+      --accent: #be185d; /* hồng đậm sang trọng */
+      --border: #f3e8e8;
+      --glow: rgba(190,24,93,0.3);
     }
-
     body {
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #ffffff;
-      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text);
     }
-
     .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 16px;
     }
-
-    .profile {
+    header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 24px;
     }
-
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ffffff;
-      margin-bottom: 20px;
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
     }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
+    header p {
+      font-size: 14px;
+      color: var(--muted);
     }
-
-    .info {
-      font-size: 18px;
-      opacity: 0.9;
-      margin-bottom: 6px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    .profile {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      padding: 24px;
       gap: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .gallery img {
+    .profile:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px var(--glow);
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #f9a8d4;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .avatar img {
       width: 100%;
-      border-radius: 14px;
+      height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
     }
-
-    .gallery img:hover {
-      transform: scale(1.03);
+    .avatar:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px var(--glow);
     }
-
+    .info {
+      flex-grow: 1;
+    }
+    .info div {
+      font-size: 16px;
+      margin: 6px 0;
+    }
+    .info div strong {
+      color: var(--muted);
+    }
+    .description {
+      font-size: 15px;
+      color: #44403c;
+      background: #fff7f9;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .description:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 16px var(--glow);
+    }
+    .gallery {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      padding: 20px;
+      margin-top: 32px;
+    }
+    .gallery h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fde2e4;
+      border: 1px solid #f3e8e8;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px var(--glow);
+    }
     footer {
       text-align: center;
-      margin-top: 50px;
-      opacity: 0.6;
-      font-size: 14px;
+      margin-top: 32px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+    @media (min-width: 560px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div class="profile">
-      <img src="./anh.jpg" alt="Ảnh bố tôi" class="avatar">
-      <h1>Nguyễn Văn A</h1>
-      <p class="info">Năm sinh: 1975</p>
-      <p class="info">📞 SĐT: 09xxxxxxxx</p>
-      <p class="info">✉️ Email: example@gmail.com</p>
-    </div>
+    <header>
+      <h1>Giới thiệu về Mẹ</h1>
+      <p>Một góc nhỏ lưu giữ sự dịu dàng và tình yêu thương</p>
+    </header>
 
-    <div class="gallery">
-      <img src="anh.jpg" alt="">
-      <img src="./img2.jpg" alt="">
-      <img src="./img3.jpg" alt="">
-    </div>
+    <section class="profile">
+      <div class="top">
+        <div class="avatar">
+          <img src="me.jpg" alt="Ảnh chân dung của mẹ" />
+        </div>
+        <div class="info">
+          <div><strong>Họ và tên:</strong> Nguyễn Thị Hạnh</div>
+          <div><strong>Năm sinh:</strong> 1982</div>
+          <div><strong>Số điện thoại:</strong> 09xxxxxxx</div>
+          <div><strong>Email:</strong> ***********@gmail.com</div>
+        </div>
+      </div>
+      <div class="description">
+        Mẹ tôi là người dịu dàng, kiên nhẫn và luôn dành trọn tình yêu cho gia đình.  
+        Từ những việc nhỏ bé, mẹ dạy tôi cách sống tử tế, biết quan tâm và chia sẻ.  
+        Mẹ chính là nguồn động lực để tôi học cách yêu thương và trưởng thành mỗi ngày.
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Hình ảnh của mẹ</h2>
+      <div class="grid">
+        <div class="photo"><img src="me1.jpg" alt="Mẹ trong đời thường" /></div>
+        <div class="photo"><img src="me2.jpg" alt="Mẹ bên gia đình" /></div>
+        <div class="photo"><img src="me3.jpg" alt="Mẹ trong công việc" /></div>
+        <div class="photo"><img src="me4.jpg" alt="Khoảnh khắc dịu dàng" /></div>
+      </div>
+    </section>
 
     <footer>
-      Trang giới thiệu gia đình – 2025
+      © 2025 — ductri
     </footer>
   </div>
 </body>
